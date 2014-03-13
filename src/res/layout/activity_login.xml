@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/headerText"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -26,8 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:text="@string/username"
-                android:textSize="@style/loginfont" />
+                android:text="@string/username" />
 
             <EditText
                 android:id="@+id/et_login_username"
@@ -47,15 +47,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:text="@string/password"
-                android:textSize="@style/loginfont" />
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/et_login_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
-                android:layout_marginRight="30px" />
+                android:layout_marginRight="30px"
+                android:password="true" />
         </LinearLayout>
 
         <LinearLayout

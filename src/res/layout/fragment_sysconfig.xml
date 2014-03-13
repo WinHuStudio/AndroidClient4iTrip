@@ -8,10 +8,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sysconfig" />
-    
-    <Button android:id="@+id/sys_btn_test" 
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="cc"
-        />
+
+    <Button
+        android:id="@+id/sys_btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cc" />
+
+    <ImageButton
+        android:id="@+id/img_test_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
