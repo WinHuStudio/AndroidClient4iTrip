@@ -5,27 +5,90 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import roboguice.activity.RoboActivity;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itrip.R;
+import com.itrip.widget.MyProgresss;
 
-public abstract class SuperActivity extends RoboActivity {
+public abstract class SuperActivity extends RoboActivity
+{
 	protected TextView txt_Title;
 	protected ImageView image_back;
 	protected ImageView image_set;
+	protected static final int ProgressMy = 1;// 自定义对话框
+	protected Dialog mdialog = null;
 
-	public boolean isNetWorkConnected() {
+	public boolean isNetWorkConnected()
+	{
 		NetworkInfo localNetworkInfo = ((ConnectivityManager) getSystemService("connectivity"))
 				.getActiveNetworkInfo();
 		return (localNetworkInfo != null) && (localNetworkInfo.isConnected());
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id)
+	{
+
+		switch (id)
+		{
+			case ProgressMy: // system
+				MyProgresss myDialog = new MyProgresss(getThisContext());
+				myDialog.setCancelable(true);
+				mdialog = myDialog;
+				break;
+
+		}
+		return mdialog;
+	}
+
+	private Activity getThisContext()
+	{
+		if (getParent() != null)
+		{
+			return getParent();
+		} else
+		{
+			return this;
+		}
+	}
+
+	protected void dialogDismiss()
+	{
+		if (mdialog != null && mdialog.isShowing())
+		{
+			dismissDialog(ProgressMy);
+		}
+	}
+
+	protected void showDialog()
+	{
+		showDialog(ProgressMy);
+	}
+
+	protected void ShowAcitivity(Class<?> clss)
+	{
+		Intent intent = new Intent();
+		intent.setClass(SuperActivity.this, clss);
+		startActivity(intent);
 	}
 
 	// private final static boolean PRINT_LOG = true;
@@ -360,13 +423,16 @@ public abstract class SuperActivity extends RoboActivity {
 	 * @author pjc
 	 * @Create at: 2013-7-24 上午9:30:56
 	 */
-	public void openDialog(String title, String msg, int icoint) {
+	public void openDialog(String title, String msg, int icoint)
+	{
 		new AlertDialog.Builder(this).setIcon(R.drawable.ic_launcher)
 				.setTitle(title).setMessage(msg).setIcon(icoint)
-				.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+				.setPositiveButton("确认", new DialogInterface.OnClickListener()
+				{
 
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
+					public void onClick(DialogInterface dialog, int which)
+					{
 						dialog.dismiss();
 						// Intent intent=new Intent(context, getClass())
 					}
@@ -377,12 +443,14 @@ public abstract class SuperActivity extends RoboActivity {
 	public static final int MEDIA_TYPE_VIDEO = 2;
 
 	/** Create a file Uri for saving an image or video */
-	public static Uri getOutputMediaFileUri(int type) {
+	public static Uri getOutputMediaFileUri(int type)
+	{
 		return Uri.fromFile(getOutputMediaFile(type));
 	}
 
 	/** Create a File for saving an image or video */
-	public static File getOutputMediaFile(int type) {
+	public static File getOutputMediaFile(int type)
+	{
 		// To be safe, you should check that the SDCard is mounted
 		// using Environment.getExternalStorageState() before doing this.
 
@@ -394,8 +462,10 @@ public abstract class SuperActivity extends RoboActivity {
 		// between applications and persist after your app has been uninstalled.
 
 		// Create the storage directory if it does not exist
-		if (!mediaStorageDir.exists()) {
-			if (!mediaStorageDir.mkdirs()) {
+		if (!mediaStorageDir.exists())
+		{
+			if (!mediaStorageDir.mkdirs())
+			{
 				Log.d("MyCameraApp", "failed to create directory");
 				return null;
 			}
@@ -405,13 +475,16 @@ public abstract class SuperActivity extends RoboActivity {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
 				.format(new Date());
 		File mediaFile;
-		if (type == MEDIA_TYPE_IMAGE) {
+		if (type == MEDIA_TYPE_IMAGE)
+		{
 			mediaFile = new File(mediaStorageDir.getPath() + File.separator
 					+ "IMG_" + timeStamp + ".jpg");
-		} else if (type == MEDIA_TYPE_VIDEO) {
+		} else if (type == MEDIA_TYPE_VIDEO)
+		{
 			mediaFile = new File(mediaStorageDir.getPath() + File.separator
 					+ "VID_" + timeStamp + ".mp4");
-		} else {
+		} else
+		{
 			return null;
 		}
 		Log.i("SuperActivity", (mediaFile != null) + "");
