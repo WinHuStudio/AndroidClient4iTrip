@@ -21,10 +21,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.itrip.R;
 import com.itrip.common.SuperActivity;
 import com.itrip.utils.Const;
-
+import com.itrip.R;
 /**
  * * TODO: * @author xl
  * 

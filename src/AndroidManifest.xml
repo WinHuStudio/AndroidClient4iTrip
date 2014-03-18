@@ -42,23 +42,23 @@
         <activity
             android:name="com.itrip.activity.WelcomeActivity"
             android:label="@string/app_name" >
-        </activity>
-        <activity android:name="com.itrip.activity.GuideActivity" >
-        </activity>
-        <activity android:name="com.itrip.activity.MainActivity" >
-        </activity>
-        <activity android:name="com.itrip.activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.itrip.activity.GuideActivity" >
+        </activity>
+        <activity android:name="com.itrip.activity.MainActivity" >
+        </activity>
+        <activity android:name="com.itrip.activity.LoginActivity" >
+        </activity>
         <activity android:name="com.itrip.activity.RegisterActivity" >
         </activity>
         <activity android:name="com.itrip.activity.TalkActivity" >
         </activity>
-        <activity android:name="com.itrip.activity.TestActivity" >
+         <activity android:name="com.itrip.activity.TestActivity" >
         </activity>
 
         <service android:name="com.itrip.service.MyService" >
@@ -76,7 +76,7 @@
     <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAC0G8R-sOQ-XDa6BlAf67Bvw0BkQZwkxg" />
         <meta-data
     android:name="com.google.android.gms.version"
-    android:value="@integer/google_play_services_version" />
+    android:value="@integer/google_play_services_version" />
         -->
 
     </application>
